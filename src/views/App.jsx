@@ -37,28 +37,3 @@ export default function App() {
     </div>
   );
 }
-
-// const addContact = ({ name, number }) => {
-  //   const person = [
-  //     {
-  //       id: uuidv4(),
-  //       name,
-  //       number,
-  //     },
-  //   ];
-
-  //   if (contacts.some((contact) => contact.name === person.name)) {
-  //     toast.error("This contact is already exist ! Try one more time, please!");
-  //     return;
-  //   }
-
-  //   setContacts((prevContacts) => [...person, ...prevContacts]);
-  // };
-
-  // const deleteContact = (id) => {
-  //   setContacts(contacts.filter((contact) => contact.id !== id));
-  // };
-
-  // const changeFilter = (e) => {
-  //   setFilter(e.currentTarget.value);
-  // };

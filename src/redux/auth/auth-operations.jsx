@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit'
 
-axios.default.baseUrl = 'http://...'
+axios.defaults.baseUrl = 'https://connections-api.herokuapp.com/'
 
 const token = {
     set(token) {

@@ -1,44 +1,52 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// import {addContactRequest,addContactSuccess, addContactError,deleteContactRequest,deleteContactSuccess,deleteContactError } from './contacts-actions'
-// import {createAsyncThunk} from '@reduxjs/toolkit'
+import {addContactRequest,
+    addContactSuccess,
+    addContactError,
+    deleteContactRequest,
+    deleteContactSuccess,
+    deleteContactError,
+    fetchContactRequest,
+    fetchContactSuccess,
+    fetchContactError
+    } from './contacts-actions'
 
-// // export const addContact = text => dispatch => {
-// //     const contact = {
-// //         text, 
-// //         completed: false,
-// //         // payload: {
-// //             //         id: uuidv4(),
-// //             //         name,
-// //             //         number,
-// //             //       },
-// //     }
+export const fetchContacts = () => async dispatch => {
+    dispatch(fetchContactRequest);
+    try {
+        const {data} = await axios.get('/contacts')
+        dispatch(fetchContactSuccess(data))
+    } catch (error) {
+        dispatch(fetchContactError(error))
+    }
+}
 
-// //     dispatch(addContactRequest)
 
-// //     axios.post('/contacts, contacts')
-// //     .then(({data}) => dispatch(addContactSuccess(data)))
-// //     .catch(error => dispatch(addContactError(error)))
-// // }
-// export const addContact = createAsyncThunk('contact/fetchBooks',
-//     async () => {
-//         const 
-//     }
-// )
+export const addContact = (name, number) => async dispatch => {}
+    const contact = {
+        name,
+        number
+    }
+    dispatch(addContactRequest())
+    try {
+        const {data} = await axios.post('/contacts', contact);
+        dispatch(addContactSuccess(data))
+    } catch (error) {
+        dispatch(addContactError(error))
+    }
+)
 
-// export const deleteContact = contactId => dispatch => {
-//     dispatch(deleteContactRequest())
+export const deleteContact = contactId => async dispatch => {
+    dispatch(deleteContactRequest())
+    try {
+        const res = await axios.delete(`/contacts/${contactId}`)
+        dispatch(deleteContactSuccess(contactId))
+    } catch (error) {
+        dispatch(deleteContactError(error))
+    }
+}
+const contactsOperation = {
+    fetchContacts, addContact, deleteContact
+}
 
-//     axios
-//     .delete(`/contact/${contactId}`)
-//     .then(() => dispatch(deleteContactSuccess(contactId)))
-//     .catch(error => dispatch(deleteContactError(error)))
-//     dispatch(deleteContactRequest())
-//     // try {
-//     //     const {data} = await axios.get(`/contact/${contactId}`)
-    
-//     //     dispatch(deleteContactSuccess(contactId))
-//     // } catch (error) {
-//     //     dispatch(deleteContactError(error))
-//     // }
-// }
+export default contactsOperation
