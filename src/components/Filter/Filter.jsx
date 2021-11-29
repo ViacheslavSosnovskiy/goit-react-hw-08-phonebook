@@ -1,11 +1,12 @@
 import s from "./filter.module.css";
-// import {useSelector, useDispatch} from 'react-redux'
-// import {getFilter} from '../../redux/contacts/contacts-selectors'
-// import {changeFilter} from '../../redux/contacts/contacts-actions'
+import { useDispatch, useSelector } from "react-redux";
+import {contactsSelector} from '../../redux/contacts/contacts-selectors'
+import {changeFilter} from '../../redux/contacts/contacts-actions'
 
-export default function Filter({value, onChange}) {
-// const value = useSelector(getFilter)
-// const dispatch = useDispatch()
+
+export default function Filter() {
+const filter = useSelector(contactsSelector.getFilter)
+const dispatch = useDispatch()
 
   return (
     <label>
@@ -13,9 +14,8 @@ export default function Filter({value, onChange}) {
       <input
         className={s.input}
         type="text"
-        value={value}
-        onChange={onChange}
-        // onChange={e => dispatch(changeFilter(e.target.value))}
+        value={filter}
+        onChange={e => dispatch(changeFilter(e.target.value))}
       />
     </label>
   );

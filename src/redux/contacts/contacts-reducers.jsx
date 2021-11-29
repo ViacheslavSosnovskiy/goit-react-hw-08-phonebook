@@ -5,7 +5,7 @@ import {addContactSuccess,deleteContactSuccess,fetchContactSuccess,changeFilter}
 const items = createReducer([], {
     [fetchContactSuccess]: (_, {payload}) => payload,
     [deleteContactSuccess]: (state, {payload}) => 
-        state.filter(contact => contact.id !== payload)
+        state.filter(contact => contact.id !== payload),
     [addContactSuccess]: (state, {payload}) => [payload, ...state]
 })
 

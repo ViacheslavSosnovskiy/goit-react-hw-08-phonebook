@@ -11,14 +11,19 @@ export default function ContactsView() {
     const isLoadingContact = useSelector(contactsSelector.getLoading)
 
     useEffect(() => {
-        dispatch(contactOperation.fetchContacts())
+        dispatch(contactsOperation.fetchContacts())
     }, [dispatch])
 
     return (
-       <>
-        <ContactForm />
-        <Filter />
-        <ContactList />
-       </>
+       <div>
+        {isLoadingContact && <h1>Загружаем...</h1>}
+            <h1>Phonebook</h1>
+            
+            <h3>Add contacts</h3>
+            <ContactForm />
+            <h3>Contacts</h3>
+            <Filter />
+            <ContactList />
+       </div>
     )
 }

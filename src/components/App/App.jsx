@@ -1,14 +1,19 @@
 
-import {useEffect, Suspense} from 'react'; // lazy
+import {useEffect, Suspense, lazy} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Switch} from 'react-router-dom';
-import Container from '../Container/Container';
-import AppBar from '../AppBar/AppBar';
-import PrivateRoute from '../PrivateRoute'
-import PablicRoute from '../PablicRoute'
 import {authOperations} from '../../redux/auth/auth-operations'
 import {authSelectors} from '../../redux/auth/auth-selectors'
 import Loader from 'react-loader-spinner'
+import PrivateRoute from '../PrivateRoute'
+import PablicRoute from '../PablicRoute'
+import Container from '../Container/Container';
+import AppBar from '../AppBar/AppBar';
+
+const HomePage = lazy(() => import('../../views/HomePage'));
+const Login = lazy(() => import('../../views/Login'));
+const Register = lazy(() => import('../../views/Register'));
+const Contacts = lazy(() => import('../../views/Contacts'))
 
 export default function App() {
     const dispatch = useDispatch()
@@ -33,19 +38,19 @@ export default function App() {
                     />
                 }>
                     <PablicRoute exact path='/' >
-                        <HomeView />
+                        <HomePage />
                     </PablicRoute>
 
-                    <PablicRoute path='/register' restricted>
-                        <RegiterView />
+                    <PablicRoute exact path='/register' restricted>
+                        <Register />
                     </PablicRoute>
 
-                    <PablicRoute path='/login' redirectTo='/contacts' restricted>
-                        <LoginView />
+                    <PablicRoute exact path='/login' redirectTo='/contacts' restricted>
+                        <Login/>
                     </PablicRoute>
 
                     <PrivateRoute path='/contacts' redirectTo='/login'>
-                        <Todo />
+                        <Contacts />
                     </PrivateRoute>
                 </Suspense>
             </Switch>
