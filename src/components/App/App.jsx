@@ -1,9 +1,8 @@
 
 import {useEffect, Suspense, lazy} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Switch} from 'react-router-dom';
-import {authOperations} from '../../redux/auth/auth-operations'
-import {authSelectors} from '../../redux/auth/auth-selectors'
+import {Routes} from 'react-router-dom';
+import {authOperations, authSelectors} from '../../redux/auth'
 import Loader from 'react-loader-spinner'
 import PrivateRoute from '../PrivateRoute'
 import PablicRoute from '../PablicRoute'
@@ -17,7 +16,7 @@ const Contacts = lazy(() => import('../../views/Contacts'))
 
 export default function App() {
     const dispatch = useDispatch()
-    const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurren)
+    const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent)
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser())
@@ -28,7 +27,7 @@ export default function App() {
         <Container>
             <AppBar />
             
-            <Switch>
+            <Routes>
                 <Suspense fallback={
                     <Loader
                         type="ThreeDots"
@@ -53,7 +52,7 @@ export default function App() {
                         <Contacts />
                     </PrivateRoute>
                 </Suspense>
-            </Switch>
+            </Routes>
         </Container>
         )    
     )

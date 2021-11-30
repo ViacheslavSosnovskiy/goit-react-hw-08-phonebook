@@ -11,7 +11,9 @@ import {addContactRequest,
     fetchContactError
     } from './contacts-actions'
 
-export const fetchContacts = () => async dispatch => {
+// axios.defaults.baseURL = 'http://localhost:3000';
+
+const fetchContacts = () => async dispatch => {
     dispatch(fetchContactRequest);
     try {
         const {data} = await axios.get('/contacts')
@@ -22,7 +24,7 @@ export const fetchContacts = () => async dispatch => {
 }
 
 
-export const addContact = (name, number) => async dispatch => {}
+const addContact = (name, number) => async dispatch => {
     const contact = {
         name,
         number
@@ -34,19 +36,22 @@ export const addContact = (name, number) => async dispatch => {}
     } catch (error) {
         dispatch(addContactError(error))
     }
-)
+}
 
-export const deleteContact = contactId => async dispatch => {
+const deleteContact = contactId => async dispatch => {
     dispatch(deleteContactRequest())
     try {
         const res = await axios.delete(`/contacts/${contactId}`)
         dispatch(deleteContactSuccess(contactId))
+        console.log(res)
     } catch (error) {
         dispatch(deleteContactError(error))
     }
 }
 const contactsOperation = {
-    fetchContacts, addContact, deleteContact
+    fetchContacts,
+    addContact,
+    deleteContact,
 }
 
 export default contactsOperation

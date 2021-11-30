@@ -1,5 +1,5 @@
-import {useSelector} from 'react-redax'
-import {authSelectors} from '../../redux/auth/auth-selectors'
+import {useSelector} from 'react-redux'
+import {authSelectors} from '../../redux/auth'
 import {NavLink} from 'react-router-dom'
 
 //  style={link} activeStyle={activeLink}

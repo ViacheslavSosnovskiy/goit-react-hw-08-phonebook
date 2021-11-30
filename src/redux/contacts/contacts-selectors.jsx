@@ -14,7 +14,10 @@ const getVisibleContacts = createSelector(
 )
 
 const contactsSelector = {
-    getContacts,getFilter,getLoading,getVisibleContacts
+    getContacts,
+    getFilter,
+    getLoading,
+    getVisibleContacts,
 }
 
-export default contactsSelector
+export default contactsSelector;

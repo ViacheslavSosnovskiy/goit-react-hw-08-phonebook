@@ -10,8 +10,8 @@ import {
   PURGE,
   REGISTER, } 
   from 'redux-persist'
-import {contactsReducer} from '/contacts';
-import {authReducer} from '/auth'
+import {contactsReducer} from './contacts';
+import {authReducer} from './auth'
 import storage from 'redux-persist/lib/storage'
 
 const middleware = [...getDefaultMiddleware({
@@ -36,24 +36,3 @@ export const store = configureStore({
 
 
 export const persistor = persistStore(store)
-
-
-// ======================== old ========================== // 
-// import {configureStore} from '@reduxjs/toolkit'
-// import {setupListeners} from '@reduxjs/toolkit/query'
-// import {contactApi} from './contacts/contactSlice'
-
-// export const store = configureStore({
-//   reducer: {
-//     [contactApi.reducerPath]: contactApi.reducer,
-//   },
-//   middleware: getDefaultMiddleware => [
-//     ...getDefaultMiddleware(),
-//     contactApi.middleware,
-//   ],
-//   devTools: pr*ocess.env.NODE_ENV === 'development'
-// })
-
-// setupListeners(store.dispatch)
-
-// export default store

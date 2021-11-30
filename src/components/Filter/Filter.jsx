@@ -1,7 +1,6 @@
 import s from "./filter.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {contactsSelector} from '../../redux/contacts/contacts-selectors'
-import {changeFilter} from '../../redux/contacts/contacts-actions'
+import {contactsSelector, changeFilter} from '../../redux/contacts'
 
 
 export default function Filter() {

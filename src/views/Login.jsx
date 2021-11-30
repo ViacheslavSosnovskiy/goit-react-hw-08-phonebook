@@ -1,7 +1,7 @@
 // import { display } from "@mui/system";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {authOperations} from '../redux/auth/auth-operations'
+import {authOperations} from '../redux/auth'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

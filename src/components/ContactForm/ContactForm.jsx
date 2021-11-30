@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import {contactsOperation} from '../../redux/contacts/constcts-operations';
-import {contactsSelector} from '../../redux/contacts/contacts-selectors'
+import {contactsOperation, contactsSelector} from '../../redux/contacts';
+
 
 
 
