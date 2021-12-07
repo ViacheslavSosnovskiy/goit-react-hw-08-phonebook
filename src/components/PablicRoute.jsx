@@ -1,5 +1,5 @@
 import { authSelectors } from '../redux/auth'
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
@@ -9,7 +9,7 @@ export default function PablicRoute({children, restricted = false, redirectTo='/
 
     return (
         <Route {...routeProps}>
-            {shouldRedirect ? <Navigate to={redirectTo} /> : children}
+            {shouldRedirect ? <Redirect to={redirectTo} /> : children}
         </Route>
     )
 }

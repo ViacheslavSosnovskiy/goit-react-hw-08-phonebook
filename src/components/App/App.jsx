@@ -1,7 +1,7 @@
 
 import {useEffect, Suspense, lazy} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Routes} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
 import {authOperations, authSelectors} from '../../redux/auth'
 import Loader from 'react-loader-spinner'
 import PrivateRoute from '../PrivateRoute'
@@ -27,7 +27,7 @@ export default function App() {
         <Container>
             <AppBar />
             
-            <Routes>
+            <Switch>
                 <Suspense fallback={
                     <Loader
                         type="ThreeDots"
@@ -52,7 +52,7 @@ export default function App() {
                         <Contacts />
                     </PrivateRoute>
                 </Suspense>
-            </Routes>
+            </Switch>
         </Container>
         )    
     )
