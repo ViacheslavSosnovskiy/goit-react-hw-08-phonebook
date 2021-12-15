@@ -1,6 +1,5 @@
 export default function HomePage() {
-
-    
+ 
 const styles = {
     container: {
       display: 'flex',

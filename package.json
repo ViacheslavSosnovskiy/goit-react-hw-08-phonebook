@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://ViacheslavSosnovskiy.github.io/goit-react-hw-08-phonebook",
   "dependencies": {
-    "@mui/material": "^5.2.1",
+    "@mui/material": "^5.2.4",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",

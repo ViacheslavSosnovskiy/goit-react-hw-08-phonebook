@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {authOperations} from '../redux/auth'
+import { authOperations } from '../redux/auth'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import Button from '@mui/material/Button';
 
 export default function Regiter() {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function Regiter() {
         e.preventDefault()
 
         if (!name) return toast.error('Введите ваше имя!');
-        if(!email) return toast.error('Введите вашу почту!')
+        if (!email) return toast.error('Введите вашу почту!')
         if (!password) return toast.error('Введите ваш пароль!');
 
         dispatch(authOperations.register({ name, email, password}))
@@ -65,6 +66,7 @@ export default function Regiter() {
                 </label>
 
                 <button type="submit">Register</button>
+                {/* <Button type="submit" variant="outlined">Register</Button> */}
             </form>
         </div> 
     )

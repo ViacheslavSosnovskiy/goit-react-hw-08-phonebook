@@ -31,9 +31,9 @@ export default function App() {
                 <Suspense fallback={
                     <Loader
                         type="ThreeDots"
-                        color="#00BFFF"
-                        height={100}
-                        width={100}
+                        color="#303C6C"
+                        height={60}
+                        width={60}
                     />
                 }>
                     <PablicRoute exact path='/' >
